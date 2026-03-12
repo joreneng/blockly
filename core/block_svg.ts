@@ -2058,7 +2058,13 @@ export class BlockSvg
       announcementContext.push('Moving'); // TODO: Specialize for inserting?
       // NB: Old code here doesn't seem to handle parents correctly.
       if (this.currentConnectionCandidate.type === ConnectionType.INPUT_VALUE) {
-        announcementContext.push('to', 'input');
+        const inputName =
+          this.currentConnectionCandidate.getParentInput()?.label ??
+          this.currentConnectionCandidate.getParentInput()?.name?.toLowerCase();
+        const announcementParts = ['to', inputName, 'input', 'in'].filter(
+          Boolean,
+        );
+        announcementContext.push(...announcementParts);
       } else {
         announcementContext.push('to', 'child');
       }

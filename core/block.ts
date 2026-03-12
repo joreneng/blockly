@@ -2151,6 +2151,9 @@ export class Block {
         input.setAlign(alignment);
       }
     }
+    if (element['label']) {
+      input.setLabel(element['label']);
+    }
     return input;
   }
 
