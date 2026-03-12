@@ -234,7 +234,7 @@ export class BlockSvg
    * @internal
    */
   recomputeAriaLabel() {
-    if (this.isSimpleReporter(true, true)) return;
+    if (this.isSimpleReporter(true, true) && !this.isInFlyout) return;
 
     aria.setState(
       this.getFocusableElement(),
@@ -246,7 +246,7 @@ export class BlockSvg
   }
 
   private computeAriaLabelForFlyoutBlock(): string {
-    return `${this.computeAriaLabel(true)}, block`;
+    return `${this.computeAriaLabel()}, block`;
   }
 
   computeAriaLabel(
